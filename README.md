@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# editable-website
 
-## Getting Started
+Next.js starter for an **in-place editable marketing website**. Sign in, click the pencil, and edit page copy on the canvas. A local JSON store holds overrides — swap that file for any CMS or API when you drop the pattern into a real site.
 
-First, run the development server:
+The demo is a dummy **Acme Motors** car dealership. It is not a live product and it does not talk to a hosted auth or database.
+
+## What you get
+
+- Dummy cookie login (`admin@example.com` / `edit-demo`)
+- `EditModeProvider` + `EditableText` (contentEditable + pencil)
+- Floating edit dock when signed in
+- `GET` / `PUT` `/api/copy` with a `CopyStore` interface
+- TypeScript throughout (App Router, route handlers, `proxy.ts`)
+
+## Run it
 
 ```bash
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000), sign in at `/login`, tap **Edit**, then click any outlined sentence.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run typecheck
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Drop it into another marketing site
 
-## Learn More
+Copy these folders and files:
 
-To learn more about Next.js, take a look at the following resources:
+- `components/cms/`
+- `lib/copy.ts`, `lib/copy-store.ts`, `lib/admin-session.ts`, `lib/admin-cookie.ts`, `lib/http.ts`
+- `app/api/login`, `app/api/logout`, `app/api/copy`
+- `proxy.ts` (or the login redirect)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Wrap the site in `EditModeProvider`, replace hardcoded strings with `<EditableText k="hero.title" />`, and add keys to `DEFAULT_COPY` in `lib/copy.ts`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To persist somewhere else, replace `jsonCopyStore` in `lib/copy-store.ts`. The UI does not change.
 
-## Deploy on Vercel
+## Dummy login
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Env | Default |
+| --- | --- |
+| `ADMIN_EMAIL` | `admin@example.com` |
+| `ADMIN_PASS` | `edit-demo` |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is a local httpOnly cookie, not Supabase or a hosted IdP.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
