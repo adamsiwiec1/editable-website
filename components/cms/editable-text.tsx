@@ -21,8 +21,7 @@ export function EditableText({
 }) {
   const cms = useOptionalEditMode();
   const value = cms ? cms.text(k) : DEFAULT_COPY[k];
-  const isAdmin = Boolean(cms?.isAdmin);
-  const showOutlines = Boolean(cms?.editing);
+  const editing = Boolean(cms?.isAdmin && cms.editing);
   const [draft, setDraft] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
@@ -42,7 +41,7 @@ export function EditableText({
     return () => cancelAnimationFrame(id);
   }, [draft]);
 
-  if (!isAdmin || !cms) {
+  if (!editing || !cms) {
     return <Tag className={className}>{value}</Tag>;
   }
 
@@ -82,7 +81,7 @@ export function EditableText({
         'group/edit relative',
         inline && 'inline-block max-w-full align-baseline',
         'pr-11',
-        showOutlines && draft === null && 'rounded-sm outline outline-1 outline-offset-2 outline-amber-400/40',
+        draft === null && 'rounded-sm outline outline-1 outline-offset-2 outline-amber-400/40',
         draft !== null && 'z-[2]',
         busy && 'opacity-70',
         className,

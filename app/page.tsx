@@ -16,7 +16,9 @@ export default function HomePage() {
             as="p"
             className="text-[0.65rem] tracking-[0.28em] text-amber-300 uppercase"
           />
-          <EditableText k="banner.title" as="h1" className="mt-2 font-display text-3xl text-zinc-50 sm:text-4xl" />
+          <div data-demo="tour-copy">
+            <EditableText k="banner.title" as="h1" className="mt-2 font-display text-3xl text-zinc-50 sm:text-4xl" />
+          </div>
           <EditableText
             k="banner.body"
             as="p"

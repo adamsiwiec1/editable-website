@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Oswald, Source_Sans_3 } from 'next/font/google';
 import { EditModeChip } from '@/components/cms/edit-mode-chip';
 import { EditModeProvider } from '@/components/cms/edit-mode-provider';
+import { DemoTourProvider } from '@/components/demo/site-tour';
 import { SiteChrome } from '@/components/site-chrome';
 import { peekAdmin } from '@/lib/admin-session';
 import { EMPTY_PAGE_CONTENT } from '@/lib/copy';
@@ -20,7 +21,7 @@ const sourceSans = Source_Sans_3({
 
 const title = 'editable-website — in-place editable marketing site starter';
 const description =
-  'Next.js starter for an in-place editable marketing website. Sign in, click the pencil, and edit page copy. Local JSON store you can swap for any CMS.';
+  'Next.js starter for an in-place editable marketing website. Founders edit page copy in place. Local JSON store you can swap for any CMS.';
 
 export const metadata: Metadata = {
   title: {
@@ -66,8 +67,10 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
     >
       <body className="lot-wash flex min-h-full flex-col">
         <EditModeProvider isAdmin={Boolean(admin)} initial={content}>
-          <SiteChrome isAdmin={Boolean(admin)}>{children}</SiteChrome>
-          <EditModeChip />
+          <DemoTourProvider>
+            <SiteChrome isAdmin={Boolean(admin)}>{children}</SiteChrome>
+            <EditModeChip />
+          </DemoTourProvider>
         </EditModeProvider>
       </body>
     </html>

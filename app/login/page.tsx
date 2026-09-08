@@ -9,7 +9,10 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <div className="grid min-h-[70vh] place-items-center px-5 py-16">
-      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-zinc-900/80 p-7 shadow-2xl shadow-black/40">
+      <div
+        data-demo="login-card"
+        className="w-full max-w-md rounded-2xl border border-white/10 bg-zinc-900/80 p-7 shadow-2xl shadow-black/40"
+      >
         <p className="text-[0.65rem] tracking-[0.28em] text-amber-300 uppercase">Dummy login</p>
         <h1 className="mt-3 font-display text-3xl text-zinc-50">Lot office</h1>
         <p className="mt-3 text-sm leading-relaxed text-zinc-400">

@@ -12,6 +12,7 @@ export function EditModeChip() {
       <div className="relative">
         <button
           type="button"
+          data-demo="edit-chip"
           onClick={() => cms.setEditing(!cms.editing)}
           aria-pressed={cms.editing}
           aria-label={cms.editing ? 'Exit edit mode' : 'Edit the site'}
@@ -22,7 +23,7 @@ export function EditModeChip() {
           }`}
         >
           <Pencil className="size-3.5" aria-hidden />
-          {cms.editing && <span className="pr-0.5">Done</span>}
+          <span className="pr-0.5">{cms.editing ? 'Done' : 'Edit the site'}</span>
         </button>
         {cms.saveError && (
           <p

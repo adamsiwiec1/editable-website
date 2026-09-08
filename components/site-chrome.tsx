@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { EditableText } from '@/components/cms/editable-text';
-import { SignOutButton } from '@/components/sign-out-button';
+import { HeaderActions } from '@/components/demo/header-actions';
 
 export function SiteChrome({
   isAdmin,
@@ -18,24 +18,20 @@ export function SiteChrome({
             <EditableText k="chrome.brand" as="p" className="font-display text-xl tracking-wide text-zinc-50" />
             <EditableText k="chrome.tagline" as="p" className="text-[0.7rem] tracking-[0.18em] text-amber-300/80 uppercase" />
           </Link>
-          <nav className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm text-zinc-300">
-            <a href="#inventory" className="hover:text-white">
-              <EditableText k="chrome.nav_inventory" />
-            </a>
-            <a href="#hours" className="hover:text-white">
-              <EditableText k="chrome.nav_hours" />
-            </a>
-            <a href="#visit" className="hidden sm:inline hover:text-white">
-              <EditableText k="chrome.nav_visit" />
-            </a>
-            {isAdmin ? (
-              <SignOutButton />
-            ) : (
-              <Link href="/login" className="rounded-full border border-amber-400/40 px-3 py-1.5 text-amber-200 hover:border-amber-300 hover:text-white">
-                <EditableText k="chrome.sign_in" />
-              </Link>
-            )}
-          </nav>
+          <div className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2">
+            <nav className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm text-zinc-300">
+              <a href="#inventory" className="hover:text-white">
+                <EditableText k="chrome.nav_inventory" />
+              </a>
+              <a href="#hours" className="hover:text-white">
+                <EditableText k="chrome.nav_hours" />
+              </a>
+              <a href="#visit" className="hidden sm:inline hover:text-white">
+                <EditableText k="chrome.nav_visit" />
+              </a>
+            </nav>
+            <HeaderActions isAdmin={isAdmin} />
+          </div>
         </div>
       </header>
       <main className="flex-1">{children}</main>
