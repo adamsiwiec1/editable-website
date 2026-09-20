@@ -1,0 +1,9 @@
+{
+  "directoryListing": false,
+  "trailingSlash": false,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/desk-x7k2", "destination": "/desk-x7k2.html" },
+    { "source": "/desk-x7k2/", "destination": "/desk-x7k2.html" }
+  ]
+}

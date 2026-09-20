@@ -1,0 +1,24 @@
+{
+  "name": "editable-website-demo-react",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 4011 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --port 4011 --strictPort",
+    "deploy": "npx --yes vercel --yes --prod"
+  },
+  "dependencies": {
+    "editable-website": "file:./editable-website-0.1.0.tgz",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
+  }
+}

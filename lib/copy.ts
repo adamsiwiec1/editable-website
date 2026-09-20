@@ -11,7 +11,7 @@ export const DEFAULT_COPY = {
   'banner.title': 'An in-place editable website starter.',
   'banner.body':
     'This dummy Acme Motors lot is the demo. Sign in, tap Edit, then click any outlined sentence and type. Saves go to a local JSON file — swap that file for any CMS or API when you drop this into a real marketing site.',
-  'banner.hint': 'Demo login: admin@example.com / edit-demo',
+  'banner.hint': 'Owners use a hidden URL, not a Sign in button — any valid email and password. No real session.',
 
   'hero.eyebrow': 'Acme Motors · Est. 1968',
   'hero.title': 'The lot is open.',
@@ -23,21 +23,6 @@ export const DEFAULT_COPY = {
   'lot.eyebrow': 'This week’s iron',
   'lot.title': 'Three that are ready to leave today.',
   'lot.lede': 'Prices as marked. Ask for the out-the-door number before you sit down.',
-
-  'car1.name': '2019 Honda Accord EX',
-  'car1.meta': 'Sedan · 48k miles · one owner',
-  'car1.price': '$18,450',
-  'car1.blurb': 'Clean CarFax, new tires, and a commute that still feels quiet.',
-
-  'car2.name': '2021 Toyota Highlander LE',
-  'car2.meta': 'SUV · 36k miles · third row',
-  'car2.price': '$29,900',
-  'car2.blurb': 'Car seats, groceries, and a Saturday soccer bag — all in one trip.',
-
-  'car3.name': '2018 Ford F-150 XLT',
-  'car3.meta': 'Truck · 62k miles · 4x4',
-  'car3.price': '$26,200',
-  'car3.blurb': 'The weekend hauler. Bed liner already in. Tow package ready.',
 
   'hours.eyebrow': 'The lot',
   'hours.title': 'Come by before the lights go out.',

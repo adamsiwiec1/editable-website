@@ -1,8 +1,8 @@
 {
-  "name": "editable-website",
+  "name": "editable-website-demo",
   "version": "0.1.0",
   "private": true,
-  "description": "Next.js starter for an in-place editable marketing website. Sign in, click the pencil, and edit page copy. Local JSON store you can swap for any CMS.",
+  "description": "Next.js demo for editable-website. Sign in, click the pencil, and edit page copy. The editor is the editable-website npm package.",
   "license": "MIT",
   "author": "Adam Siwiec",
   "repository": {
@@ -25,16 +25,34 @@
     "nextjs-starter",
     "editable-website"
   ],
+  "workspaces": [
+    "packages/core",
+    "packages/cli"
+  ],
   "scripts": {
+    "predev": "npm run build -w editable-website",
     "dev": "next dev --port 3010",
+    "prebuild": "npm run build -w editable-website",
     "build": "next build",
     "start": "next start --port 3010",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test lib/feature-demo-storage.test.ts"
+    "test": "node --experimental-strip-types --test lib/feature-demo-storage.test.ts lib/inventory.test.ts lib/demo-place.test.ts packages/core/src/copy.test.ts packages/cli/detect.test.mjs",
+    "demo:html": "npm run dev --prefix demos/vanilla",
+    "demo:vanilla": "npm run dev --prefix demos/vanilla",
+    "demo:react": "npm run dev --prefix demos/react",
+    "demo:svelte": "npm run dev --prefix demos/svelte",
+    "demo:next": "npm run dev --prefix demos/next",
+    "example:api": "npm start --prefix examples/express",
+    "cli": "node packages/cli/bin.mjs",
+    "deploy:demo:html": "npm run deploy --prefix demos/vanilla",
+    "deploy:demo:react": "npm run deploy --prefix demos/react",
+    "deploy:demo:svelte": "npm run deploy --prefix demos/svelte",
+    "deploy:demo:next": "npm run deploy --prefix demos/next"
   },
   "dependencies": {
-    "lucide-react": "^1.42.0",
+    "editable-website": "workspace:*",
+    "gsap": "^3.15.0",
     "next": "16.3.4",
     "react": "19.2.8",
     "react-dom": "19.2.8",

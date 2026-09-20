@@ -1,0 +1,21 @@
+{
+  "name": "editable-website-demo-svelte",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 4013 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --port 4013 --strictPort",
+    "deploy": "npx --yes vercel --yes --prod"
+  },
+  "dependencies": {
+    "editable-website": "file:./editable-website-0.1.0.tgz",
+    "svelte": "^5.45.6"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.2.4",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
+  }
+}

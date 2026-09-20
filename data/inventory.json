@@ -1,0 +1,51 @@
+{
+  "featured": [
+    "civic",
+    "highlander",
+    "f150"
+  ],
+  "catalog": [
+    {
+      "id": "accord",
+      "name": "2019 Honda Accord EX",
+      "meta": "Sedan · 48k miles · one owner",
+      "price": "$18,450",
+      "blurb": "Clean CarFax, new tires, and a commute that still feels quiet."
+    },
+    {
+      "id": "highlander",
+      "name": "2021 Toyota Highlander LE",
+      "meta": "SUV · 36k miles · third row",
+      "price": "$29,900",
+      "blurb": "Car seats, groceries, and a Saturday soccer bag — all in one trip."
+    },
+    {
+      "id": "f150",
+      "name": "2018 Ford F-150 XLT",
+      "meta": "Truck · 62k miles · 4x4",
+      "price": "$26,200",
+      "blurb": "The weekend hauler. Bed liner already in. Tow package ready."
+    },
+    {
+      "id": "civic",
+      "name": "2020 Honda Civic Sport",
+      "meta": "Hatch · 31k miles · manual",
+      "price": "$17,900",
+      "blurb": "A city car that still likes an on-ramp. One owner, no stories."
+    },
+    {
+      "id": "outback",
+      "name": "2019 Subaru Outback Premium",
+      "meta": "Wagon · 54k miles · AWD",
+      "price": "$21,650",
+      "blurb": "Roof rails, winter package, and a dog that already approved the cargo area."
+    },
+    {
+      "id": "camry",
+      "name": "2022 Toyota Camry SE",
+      "meta": "Sedan · 22k miles · one owner",
+      "price": "$23,400",
+      "blurb": "Still smells like the lot sticker. Highway miles, dealer maintained."
+    }
+  ]
+}

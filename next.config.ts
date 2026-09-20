@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  transpilePackages: ['editable-website'],
+  images: {
+    remotePatterns: [{ protocol: 'https', hostname: 'github.com' }],
+  },
 };
 
 export default nextConfig;

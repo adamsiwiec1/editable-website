@@ -1,0 +1,11 @@
+{
+  "name": "editable-website-demo-html",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "predev": "npm run build --prefix ../../packages/core && node ../sync-iife.mjs && cp ../shared.css ./styles.css && cp ../shared/ew-walk.js ./ew-walk.js",
+    "dev": "npx --yes serve . -l 4010 --no-port-switching",
+    "predeploy": "node ../sync-iife.mjs && cp ../shared.css ./styles.css && cp ../shared/ew-walk.js ./ew-walk.js",
+    "deploy": "npx --yes vercel --yes --prod"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "editable-website",
+  "version": "0.1.1",
+  "description": "Vanilla in-place editor for marketing copy. Mark sentences with data-copy, call mount(), save through GET/PUT /api/copy.",
+  "license": "MIT",
+  "author": "Adam Siwiec",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "editable-website": "./bin/cli.mjs"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamsiwiec1/editable-website.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/adamsiwiec1/editable-website/issues"
+  },
+  "homepage": "https://github.com/adamsiwiec1/editable-website#readme",
+  "keywords": [
+    "cms",
+    "inline-editing",
+    "contenteditable",
+    "visual-editor",
+    "marketing-website",
+    "web-components",
+    "data-copy"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && esbuild src/iife.ts --bundle --format=iife --outfile=dist/editable-website.js --global-name=EditableWebsite && node ../../demos/sync-iife.mjs && node ../cli/sync-bin.mjs",
+    "test": "node --experimental-strip-types --test src/copy.test.ts"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "typescript": "^5"
+  }
+}

@@ -3,6 +3,7 @@ import { requireAdmin } from '@/lib/admin-session';
 import { isCopyKey } from '@/lib/copy';
 import { copyStore } from '@/lib/copy-store';
 import { copyPatchSchema, jsonError, readJson } from '@/lib/http';
+import { triggerCi } from '@/lib/trigger-ci';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,6 +24,7 @@ export async function PUT(req: Request): Promise<NextResponse> {
       return NextResponse.json({ error: 'Unknown copy key' }, { status: 400 });
     }
     const content = await copyStore.save({ key: body.key, value: body.value });
+    await triggerCi();
     return NextResponse.json(content);
   } catch (err) {
     return jsonError(err);

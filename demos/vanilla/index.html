@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>editable-website · HTML demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main>
+      <p class="kicker">HTML demo</p>
+      <h1 data-copy="hero.title" data-demo="tour-copy">The lot is open.</h1>
+      <p class="lede" data-copy="hero.lede" data-copy-multiline>
+        Mark sentences with data-copy. Call mount(). No framework, no build.
+      </p>
+      <a class="cta" href="#add" data-copy="hero.cta">Add it to your site</a>
+
+      <section class="panel" id="how">
+        <p>
+          This folder is the whole site. Edits stay in this browser. These demos do not call an API.
+        </p>
+        <p>Owners use a hidden URL (not linked from this page). Start <strong>Try the demo</strong> to open it.</p>
+        <p id="owner-row" hidden>
+          <button id="sign-out" type="button">Sign out</button>
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Try this page</h2>
+        <ol class="steps">
+          <li>Start the demo, open the hidden login, then any valid email and password.</li>
+          <li>Tap <strong>Edit the site</strong>, click a sentence, type, press Enter.</li>
+        </ol>
+      </section>
+
+      <section class="panel" id="add">
+        <h2>Add it to an HTML site</h2>
+        <p class="row">
+          <a href="https://www.npmjs.com/package/editable-website">npm package</a>
+          <a href="https://github.com/adamsiwiec1/editable-website">GitHub repo</a>
+        </p>
+        <ol class="steps">
+          <li data-demo="install">
+            Install the editor
+            <figure class="snippet">
+              <figcaption>npm</figcaption>
+              <pre><code>npm i editable-website</code></pre>
+            </figure>
+          </li>
+          <li data-demo="mark">
+            Mark sentences with <code>data-copy</code>. The text on the page is the default.
+            <figure class="snippet">
+              <figcaption>index.html</figcaption>
+              <pre><code>&lt;h1 data-copy="hero.title"&gt;The lot is open.&lt;/h1&gt;
+&lt;editable-chip&gt;&lt;/editable-chip&gt;
+&lt;script src="./editable-website.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  EditableWebsite.mount({
+    isAdmin: true,
+    endpoints: { copy: 'http://localhost:4020/api/copy' },
+  });
+&lt;/script&gt;</code></pre>
+            </figure>
+          </li>
+          <li data-demo="mount">
+            Call <code>mount()</code> after paint and pass <code>isAdmin</code> from your session.
+            <figure class="snippet">
+              <figcaption>index.html</figcaption>
+              <pre><code>&lt;script&gt;
+  EditableWebsite.mount({
+    isAdmin: true,
+    endpoints: { copy: 'http://localhost:4020/api/copy' },
+  });
+&lt;/script&gt;</code></pre>
+            </figure>
+          </li>
+          <li data-demo="persist">
+            Persist on a host you run. Clone the example Express API — it writes a JSON file. Point
+            <code>endpoints.copy</code> at <code>http://localhost:4020/api/copy</code>. Gate PUT with
+            your login before production. Call <code>triggerCi()</code> after a save if you want a rebuild.
+            <figure class="snippet">
+              <figcaption>clone</figcaption>
+              <pre><code>git clone https://github.com/adamsiwiec1/editable-website.git</code></pre>
+            </figure>
+            <figure class="snippet">
+              <figcaption>examples/express</figcaption>
+              <pre><code>cd editable-website/examples/express
+npm i
+npm start</code></pre>
+            </figure>
+            <figure class="snippet">
+              <figcaption>GET /api/copy</figcaption>
+              <pre><code>{
+  "copy": {
+    "hero.title": "The lot is open."
+  }
+}</code></pre>
+            </figure>
+            <figure class="snippet">
+              <figcaption>PUT /api/copy</figcaption>
+              <pre><code>{
+  "key": "hero.title",
+  "value": "Sold on the lot."
+}</code></pre>
+            </figure>
+          </li>
+        </ol>
+      </section>
+
+      <footer class="editor-footer">
+        <a class="editor-footer-repo" href="https://github.com/adamsiwiec1/editable-website" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+          </svg>
+          GitHub
+        </a>
+        <a href="https://github.com/adamsiwiec1" target="_blank" rel="noreferrer" title="@adamsiwiec1">
+          <img class="editor-footer-avatar" src="https://github.com/adamsiwiec1.png" alt="@adamsiwiec1" width="44" height="44" />
+        </a>
+      </footer>
+    </main>
+
+    <editable-chip data-demo="edit-chip"></editable-chip>
+    <a class="primary try-demo" data-demo="try-demo" href="/desk-x7k2" id="try-demo">Try the demo →</a>
+    <script src="/editable-website.js"></script>
+    <script>
+      const COPY_STORAGE = 'editable-website:demo-copy';
+
+      function readLocalCopy() {
+        try {
+          return JSON.parse(localStorage.getItem(COPY_STORAGE) || '{}');
+        } catch {
+          return {};
+        }
+      }
+
+      const OWNER_KEY = 'editable-demo:owner';
+      const owner = sessionStorage.getItem(OWNER_KEY) === '1';
+      const ownerRow = document.getElementById('owner-row');
+      const chip = document.querySelector('editable-chip');
+      if (owner) {
+        ownerRow.hidden = false;
+        document.getElementById('try-demo')?.remove();
+              } else if (chip) chip.remove();
+
+      document.getElementById('sign-out').addEventListener('click', () => {
+        sessionStorage.removeItem(OWNER_KEY);
+        location.reload();
+      });
+
+      async function boot() {
+        await EditableWebsite.mount({
+          isAdmin: owner,
+          fetchCopy: async () => ({ copy: readLocalCopy() }),
+          saveCopy: async (key, value) => {
+            const copy = readLocalCopy();
+            const next = value.trim();
+            if (next) copy[key] = next;
+            else delete copy[key];
+            localStorage.setItem(COPY_STORAGE, JSON.stringify(copy));
+            return { copy };
+          },
+        });
+      }
+
+      void boot();
+    </script>
+    <script type="module">
+      import { bootWalkthrough } from '/ew-walk.js';
+      bootWalkthrough({
+        isAdmin: () => sessionStorage.getItem('editable-demo:owner') === '1',
+        setEditing: (on) => EditableWebsite.setEditing(on),
+      });
+    </script>
+  </body>
+</html>

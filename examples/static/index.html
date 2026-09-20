@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>editable-website static example</title>
+    <style>
+      body { font: 18px/1.5 system-ui, sans-serif; margin: 2rem; max-width: 40rem; }
+      .hint { color: #666; font-size: 0.9rem; }
+    </style>
+  </head>
+  <body>
+    <p class="hint">Admin is on. Tap “Edit the site”, then change a sentence. The fuller vanilla recipe is in demos/vanilla.</p>
+    <h1 data-copy="hero.title">The lot is open.</h1>
+    <p data-copy="hero.lede" data-copy-multiline>Used sedans, family SUVs, and weekend trucks.</p>
+    <p data-copy="hero.cta">See what’s on the lot</p>
+    <editable-chip></editable-chip>
+    <script src="../../packages/core/dist/editable-website.js"></script>
+    <script>
+      const copy = {};
+      EditableWebsite.mount({
+        isAdmin: true,
+        fetchCopy: async () => ({ copy }),
+        saveCopy: async (key, value) => {
+          const next = value.trim();
+          if (next) copy[key] = next;
+          else delete copy[key];
+          return { copy };
+        },
+      });
+    </script>
+  </body>
+</html>

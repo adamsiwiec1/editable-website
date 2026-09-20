@@ -12,6 +12,11 @@ export const copyPatchSchema = z.object({
   value: z.string().max(4000),
 });
 
+export const inventoryPatchSchema = z.object({
+  slot: z.number().int().min(0).max(2),
+  id: z.string().trim().min(1).max(80),
+});
+
 export function jsonError(err: unknown): NextResponse<{ error: string }> {
   if (err instanceof z.ZodError) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 });

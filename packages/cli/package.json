@@ -1,0 +1,9 @@
+{
+  "name": "@editable-website/cli",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "editable-website": "./bin.mjs"
+  },
+  "description": "Interactive bootstrapper for editable-website. Detects the framework, marks copy, and highlights what cannot be auto-edited."
+}
