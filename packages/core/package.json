@@ -1,6 +1,6 @@
 {
   "name": "editable-website",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Vanilla in-place editor for marketing copy. Mark sentences with data-copy, call mount(), save through GET/PUT /api/copy.",
   "license": "MIT",
   "author": "Adam Siwiec",
@@ -43,8 +43,8 @@
     "data-copy"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json && esbuild src/iife.ts --bundle --format=iife --outfile=dist/editable-website.js --global-name=EditableWebsite && node ../../demos/sync-iife.mjs && node ../cli/sync-bin.mjs",
-    "test": "node --experimental-strip-types --test src/copy.test.ts"
+    "build": "tsc -p tsconfig.json && esbuild src/iife.ts --bundle --format=iife --outfile=dist/editable-website.js --global-name=EditableWebsite && node ../../demos/sync-iife.mjs",
+    "test": "node --experimental-strip-types --test src/copy.test.ts bin/detect.test.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.25.12",
